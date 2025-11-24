@@ -1,10 +1,25 @@
+import { useCharacterProvider } from '@/context/CharacterProvider'
 import React from 'react'
-import { Text, View } from 'react-native'
+import { FlatList, Text, View } from 'react-native'
 
 export const CharacterList = () => {
+  const { resources } = useCharacterProvider()
+
   return (
     <View>
-      <Text>CharacterList</Text>
+      <FlatList
+        data={resources.data}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View style={{ flex: 1 }}>
+            <Text>nombre: {item.name}</Text>
+            <Text>{item.ki}</Text>
+            <Text>{item.maxKi}</Text>
+            <Text>{item.race}</Text>
+            <Text>{item.gender}</Text>
+          </View>
+        )}
+      />
     </View>
   )
 }
