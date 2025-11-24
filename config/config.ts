@@ -1,1 +1,1 @@
-export const API_URL = 'https://www.dragonball-api.com/api'
+export const API_URL = 'https://dragonball-api.com/api'
