@@ -14,7 +14,7 @@ export const CharacterList = () => {
           <View style={{ flex: 1 }}>
             <Text>nombre: {item.name}</Text>
             <Text>ki: {item.ki}</Text>
-            <Text>{item.maxKi}</Text>
+            <Text>max ki: {item.maxKi}</Text>
             <Text>{item.race}</Text>
             <Text>{item.gender}</Text>
           </View>
