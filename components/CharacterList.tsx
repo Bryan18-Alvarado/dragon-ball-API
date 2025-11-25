@@ -16,7 +16,7 @@ export const CharacterList = () => {
             <Text>ki: {item.ki}</Text>
             <Text>max ki: {item.maxKi}</Text>
             <Text>race: {item.race}</Text>
-            <Text>{item.gender}</Text>
+            <Text>gender: {item.gender}</Text>
           </View>
         )}
       />
