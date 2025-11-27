@@ -1,6 +1,6 @@
 import { useCharacterProvider } from '@/context/CharacterProvider'
 import React from 'react'
-import { FlatList, Text, View } from 'react-native'
+import { FlatList, StyleSheet, Text, View } from 'react-native'
 
 export const CharacterList = () => {
   const { resources } = useCharacterProvider()
@@ -11,15 +11,32 @@ export const CharacterList = () => {
         data={resources.data}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <View style={{ flex: 1 }}>
-            <Text>nombre: {item.name}</Text>
-            <Text>ki: {item.ki}</Text>
-            <Text>max ki: {item.maxKi}</Text>
-            <Text>race: {item.race}</Text>
-            <Text>gender: {item.gender}</Text>
+          <View style={style.container}>
+            <Text style={style.title}>nombre:</Text>
+            <Text>{item.name}</Text>
+            <Text style={style.title}>ki:</Text>
+            <Text>{item.ki}</Text>
+            <Text style={style.title}>max ki:</Text>
+            <Text>{item.maxKi}</Text>
+            <Text style={style.title}>race:</Text>
+            <Text>{item.race}</Text>
+            <Text style={style.title}>gender:</Text>
+            <Text>{item.gender}</Text>
           </View>
         )}
       />
     </View>
   )
 }
+
+const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 24,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 12,
+  },
+})
