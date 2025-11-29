@@ -6,6 +6,6 @@ export interface Character {
   race: string
   gender: string
   description: string
-  imageUrl: string
+  image: string
   affiliation: string
 }
