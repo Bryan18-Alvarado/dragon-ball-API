@@ -17,6 +17,7 @@ export const CharacterList = () => {
           {resources.data.map((character) => (
             <CharacterCard
               key={character.id}
+              id={character.id}
               characterImg={character.image || ''}
               name={character.name}
               ki={character.ki}
