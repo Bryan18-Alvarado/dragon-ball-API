@@ -2,19 +2,19 @@ import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
 interface Props {
-  headerImg: string;
   characterImg: string;
   name: string;
   ki: string;
+  id: number,
   number: string;
   borderColor: string;
   backgroundColor: string;
 }
 
 export default function CharacterCard({
-  headerImg,
   characterImg,
   ki,
+  id,
   name,
   number,
   borderColor,
@@ -24,11 +24,21 @@ export default function CharacterCard({
 
   return (
     <View style={styles.card}>
-      <Image
-        source={{ uri: "hola" }}
+      {id === 1 || id === 3 || id === 4 ||id === 10 ? (
+    <Image
+        source={require('./../assets/images/dgball.jpg')}
         style={styles.cardHeader}
         resizeMode="cover"
       />
+      )  
+      :    (
+         <Image
+        source={require("./../assets/images/dbball2.jpg")}
+        style={styles.cardHeader}
+        resizeMode="cover"
+      />
+      ) }
+
       <View style={styles.cardBody}>
         <View
           style={[
@@ -79,6 +89,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     overflow: "hidden",
     elevation: 8,
+    marginBottom:25
   },
   cardHeader: {
     width: "100%",
