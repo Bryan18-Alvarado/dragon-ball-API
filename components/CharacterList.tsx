@@ -1,46 +1,47 @@
-import { useCharacterProvider } from '@/context/CharacterProvider'
-import React from 'react'
-import { FlatList, StyleSheet, Text, View } from 'react-native'
+import { useCharacterProvider } from "@/context/CharacterProvider";
+import React from "react";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import CharacterCard from "./CharacterCard";
 
 export const CharacterList = () => {
-  const { resources } = useCharacterProvider()
+  const { resources } = useCharacterProvider();
+  console.log(resources.data[0]);
 
   return (
-    <View>
-      <FlatList
-        data={resources.data}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <View style={style.container}>
-            <Text style={style.title}>nombre:</Text>
-            <Text style={style.text}>{item.name}</Text>
-            <Text style={style.title}>ki:</Text>
-            <Text style={style.text}>{item.ki}</Text>
-            <Text style={style.title}>max ki:</Text>
-            <Text style={style.text}>{item.maxKi}</Text>
-            <Text style={style.title}>race:</Text>
-            <Text style={style.text}>{item.race}</Text>
-            <Text style={style.title}>gender:</Text>
-            <Text style={style.text}>{item.gender}</Text>
+        <View style={style.container} >
+          
+        <ScrollView>
+          <Text style={style.title}>Dragon Ball Characters</Text>
+          <View style={{gap:"30"}}>
+            
+          {resources.data.map((character) => (
+            <CharacterCard
+              key={character.id}
+              characterImg={character.image || ''}
+              name={character.name}
+              ki={character.ki}
+              number={character.id.toString()}
+            />
+          ))}
           </View>
-        )}
-      />
-    </View>
-  )
-}
+        </ScrollView>
+        </View>
+  );
+};
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
+    justifyContent: "center",
+    alignItems: "center",
   },
   title: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 12,
-    color: '#511c1cff',
+    color: "#511c1cff",
   },
   text: {
     fontSize: 14,
   },
-})
+});

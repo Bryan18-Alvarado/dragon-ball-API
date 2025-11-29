@@ -1,10 +1,10 @@
 import { CharacterList } from '@/components/CharacterList'
-import { View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function Index() {
   return (
-    <View>
+    <SafeAreaView style={{flex:1}}>
       <CharacterList />
-    </View>
+    </SafeAreaView>
   )
 }
